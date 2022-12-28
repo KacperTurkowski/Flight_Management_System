@@ -1,0 +1,22 @@
+﻿<Window x:Class="FlightManagement.Authentication.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
+        xmlns:flightManagement="clr-namespace:FlightManagement"
+        mc:Ignorable="d"
+        Title="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}" Height="250" Width="400" ResizeMode="NoResize" x:Name="AuthWindow1">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <flightManagement:Header Grid.Row="0"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}}" VerticalAlignment="Stretch">
+            <TextBox Width="250" Height="30" Margin="10,20,10,10" Text="{Binding Login}" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Width="250" Height="30" Margin="10" Text="{Binding Password}" VerticalContentAlignment="Center"></TextBox>
+            <Button Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=AuthWindow1}" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}" Width="100" Height="30">Zaloguj</Button>
+        </StackPanel>
+    </Grid>
+</Window>
