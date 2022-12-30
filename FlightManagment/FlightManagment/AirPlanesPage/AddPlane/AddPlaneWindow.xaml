@@ -1,0 +1,51 @@
+﻿<Window x:Class="FlightManagement.AirPlanesPage.AddPlaneWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
+        mc:Ignorable="d"
+        Title="Dodaj samolot" Height="480" Width="800" ResizeMode="NoResize" x:Name="addPlaneWindow">
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="TextBoxStyle">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,0,5,10"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LabelStyle">
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Style="{StaticResource LabelStyle}"> Nazwa </Label>
+        <TextBox Grid.Row="1" Text="{Binding Name}" Style="{StaticResource TextBoxStyle}"></TextBox>
+        <Label Grid.Row="2" Style="{StaticResource LabelStyle}">Marka</Label>
+        <TextBox Grid.Row="3" Style="{StaticResource TextBoxStyle}" Text="{Binding Producer}"></TextBox>
+        <Label Grid.Row="4" Style="{StaticResource LabelStyle}">Kadłub</Label>
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
+            <RadioButton Margin="10,0,20,0" IsChecked="{Binding IsNarrowBody}">Wąskokadłubowy</RadioButton>
+            <RadioButton>Szerokokadłubowy</RadioButton>
+        </StackPanel>
+        <Label Grid.Row="6" Style="{StaticResource LabelStyle}">Tonaż</Label>
+        <TextBox Grid.Row="7" PreviewTextInput="TextBox_OnPreviewTextInput" Text="{Binding MaxWeight}" Style="{StaticResource TextBoxStyle}"/>
+        <Label Grid.Row="8" Style="{StaticResource LabelStyle}">Maksymalna liczba pasażerów</Label>
+        <TextBox Grid.Row="9" Text="{Binding MaxPassengers}" PreviewTextInput="TextBox_OnPreviewTextInput" Style="{StaticResource TextBoxStyle}"></TextBox>
+        <Label Grid.Row="10" Style="{StaticResource LabelStyle}">Spalanie</Label>
+        <TextBox Grid.Row="11" Text="{Binding FuelUsage}" PreviewTextInput="TextBox_OnPreviewTextInput" Style="{StaticResource TextBoxStyle}"></TextBox>
+        <Button Grid.Row="12" Command="{Binding CloseAddPlaneWindow}" CommandParameter="{Binding ElementName=addPlaneWindow}" Margin="100,5,100,5" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}"> Dodaj</Button>
+    </Grid>
+</Window>

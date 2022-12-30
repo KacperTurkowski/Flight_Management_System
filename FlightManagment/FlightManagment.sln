@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightManagement", "FlightM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightManagement.Data", "FlightManagment.Data\FlightManagement.Data.csproj", "{F3E0475A-664E-40A2-B678-35C6A4DCFF5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightManagement.ViewModels", "FlightManagment.ViewModels\FlightManagement.ViewModels.csproj", "{D7B5DD69-B425-4A18-B437-0F1E73C6A393}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightManagement.Base", "FlightManagement.Base\FlightManagement.Base.csproj", "{005C6DBF-C81B-43AC-948E-B792F1269617}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightManagement.Base", "FlightManagement.Base\FlightManagement.Base.csproj", "{005C6DBF-C81B-43AC-948E-B792F1269617}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{F3E0475A-664E-40A2-B678-35C6A4DCFF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3E0475A-664E-40A2-B678-35C6A4DCFF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3E0475A-664E-40A2-B678-35C6A4DCFF5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D7B5DD69-B425-4A18-B437-0F1E73C6A393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7B5DD69-B425-4A18-B437-0F1E73C6A393}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7B5DD69-B425-4A18-B437-0F1E73C6A393}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7B5DD69-B425-4A18-B437-0F1E73C6A393}.Release|Any CPU.Build.0 = Release|Any CPU
 		{005C6DBF-C81B-43AC-948E-B792F1269617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{005C6DBF-C81B-43AC-948E-B792F1269617}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{005C6DBF-C81B-43AC-948E-B792F1269617}.Release|Any CPU.ActiveCfg = Release|Any CPU

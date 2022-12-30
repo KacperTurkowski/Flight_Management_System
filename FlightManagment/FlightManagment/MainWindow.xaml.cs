@@ -2,8 +2,7 @@
 using System.Windows.Controls;
 using FlightManagement.Authentication;
 using FlightManagement.Base.Authentication;
-using FlightManagement.ViewModels.Authentication;
-using FlightManagement.ViewModels.MainPage;
+using FlightManagement.MainPage;
 
 namespace FlightManagement
 {
@@ -27,10 +26,7 @@ namespace FlightManagement
         {
             var authWindow = new AuthWindow
             {
-                DataContext = new AuthWindowViewModel
-                {
-                    LoginCommand = new LoginCommand(_accountDataProvider)
-                }
+                DataContext = new AuthWindowViewModel(_accountDataProvider)
             };
             this.Hide();
             var loggingResult = authWindow.ShowDialog();

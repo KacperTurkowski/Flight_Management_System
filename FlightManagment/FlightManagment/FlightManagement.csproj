@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FlightManagment.ViewModels\FlightManagement.ViewModels.csproj" />
+    <ProjectReference Include="..\FlightManagement.Base\FlightManagement.Base.csproj" />
   </ItemGroup>
 
 </Project>

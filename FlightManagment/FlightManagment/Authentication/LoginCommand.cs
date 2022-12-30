@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using FlightManagement.Base.Authentication;
-using FlightManagement.ViewModels.Authentication;
 
 namespace FlightManagement.Authentication
 {
