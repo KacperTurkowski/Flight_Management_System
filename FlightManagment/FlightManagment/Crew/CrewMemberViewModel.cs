@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Input;
 using FlightManagement.Base.Position;
 using FlightManagement.Crew.AddCrewMember;
+using FlightManagement.Crew.CrewMemberInfo;
 
 namespace FlightManagement.Crew;
 
@@ -22,13 +23,17 @@ public class CrewMemberViewModel
     public int PhoneNumber { get; set; }
     public string Email { get; set; }
     public ICommand CloseAddCrewMemberCommand { get; set; }
+    public ICommand DeleteCrewMemberCommand { get; set; }
 
-    public string Name => string.Concat(FirstName," ", LastName);
+    public string NameWithPosition => string.Concat(Position,": ",FirstName," ", LastName);
+    public string FullName => string.Concat(FirstName, " ", LastName);
+    public string FullAddress => string.Concat(Street, " ", HouseNumber, ", ", PostalCode, " ", City);
 
     public CrewMemberViewModel()
     {
         Positions = GetPositionsString();
         CloseAddCrewMemberCommand = new CloseAddCrewMemberCommand();
+        DeleteCrewMemberCommand = new DeleteCrewMemberCommand();
     }
 
     public static ObservableCollection<string> GetPositionsString()

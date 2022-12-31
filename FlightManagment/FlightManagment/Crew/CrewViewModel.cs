@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using FlightManagement.Base.Position;
 using FlightManagement.Crew.AddCrewMember;
+using FlightManagement.Crew.CrewMemberInfo;
 
 namespace FlightManagement.Crew
 {
@@ -17,6 +18,7 @@ namespace FlightManagement.Crew
         public ObservableCollection<CrewMemberViewModel> CrewList { get; set; }
         public ObservableCollection<CrewMemberViewModel> FilteredCrewList => FilterCrewList();
         public ICommand AddCrewMemberCommand { get; set; }
+        public ICommand OpenCrewMemberInfoCommand { get; set; }
 
         public bool IsShowAllChecked
         {
@@ -87,6 +89,7 @@ namespace FlightManagement.Crew
         public CrewViewModel()
         {
             AddCrewMemberCommand = new AddCrewMemberCommand(this);
+            OpenCrewMemberInfoCommand = new OpenCrewMemberInfoCommand(this);
             CrewList = new ObservableCollection<CrewMemberViewModel>();
             IsShowAllChecked = true;
         }
