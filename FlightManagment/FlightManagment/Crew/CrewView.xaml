@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="FlightManagement.Crew.CrewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightManagement.Crew"
+             xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Margin="10" Command="{Binding AddCrewMemberCommand}" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">Dodaj pracownika</Button>
+        </Grid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+            <CheckBox Margin="30,0,15,0" IsChecked="{Binding IsShowAllChecked}">Wszyscy</CheckBox>
+            <CheckBox Margin="15,0,15,0" IsChecked="{Binding IsPilotsChecked}">Piloci</CheckBox>
+            <CheckBox Margin="15,0,15,0" IsChecked="{Binding IsControllersChecked}">Kontrolerzy</CheckBox>
+            <CheckBox Margin="15,0,15,0" IsChecked="{Binding IsStewardsChecked}">Stewardzi</CheckBox>
+        </StackPanel>
+        <Border Grid.Row="2" BorderThickness="2" BorderBrush="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">
+            <ScrollViewer  VerticalScrollBarVisibility="Auto">
+                <ItemsControl  ItemsSource="{Binding FilteredCrewList}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button HorizontalContentAlignment="Left" Background="DarkGray" Margin="10" BorderThickness="0" Command="{Binding  ElementName=airPlanesList, Path = DataContext.OpenAirplaneInfoCommand}" CommandParameter="{Binding}">
+                                <Label Content="{Binding Name}" Margin="20,0,0,0"/>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>
