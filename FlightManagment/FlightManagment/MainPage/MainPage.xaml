@@ -7,6 +7,7 @@
              xmlns:flightManagement="clr-namespace:FlightManagement"
              xmlns:airPlanesPage="clr-namespace:FlightManagement.AirPlanesPage"
              xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
+             xmlns:crew="clr-namespace:FlightManagement.Crew"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -21,7 +22,9 @@
             </TabItem>
             <TabItem Header="Połączenia"></TabItem>
             <TabItem Header="Historia połączeń"></TabItem>
-            <TabItem Header="Załoga"></TabItem>
+            <TabItem Header="Załoga">
+                <crew:CrewView DataContext="{Binding CrewViewModel}"></crew:CrewView>
+            </TabItem>
         </TabControl>
     </Grid>
 </UserControl>

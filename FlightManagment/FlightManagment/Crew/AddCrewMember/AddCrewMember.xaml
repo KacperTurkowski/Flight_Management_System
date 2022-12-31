@@ -1,0 +1,56 @@
+﻿<Window x:Class="FlightManagement.Crew.AddCrewMember.AddCrewMember"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightManagement.Crew.AddCrewMember"
+        xmlns:textBoxWithPlaceholder="clr-namespace:FlightManagement.TextBoxWithPlaceholder"
+        xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
+        mc:Ignorable="d"
+        Title="AddCrewMember" Height="440" Width="800"
+        Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}"
+        x:Name="addCrewMemberWindow">
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="TextBoxStyle">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LabelStyle">
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="0" Grid.Column="0" Text="{Binding FirstName, Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.FirstNamePlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="0" Grid.Column="1" Text="{Binding LastName, Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.LastNamePlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}">Stanowisko</Label>
+        <ComboBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" ItemsSource="{Binding Positions}" VerticalContentAlignment="Center" SelectedItem="{Binding Position}"></ComboBox>
+        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}">Pesel</Label>
+        <textBoxWithPlaceholder:IntTextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding SocialSecurityNumber, Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.SocialSecurityNumberPlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}">Adres zamieszkania</Label>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="6" Grid.Column="0" Text="{Binding Street , Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.StreetPlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="6" Grid.Column="1" Text="{Binding HouseNumber , Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.HomeNumberPlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="7" Grid.Column="0" Text="{Binding PostalCode , Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.PostalCodePlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="7" Grid.Column="1" Text="{Binding City , Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.CityPlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <Label Grid.Row="8" Grid.Column="0" Style="{StaticResource LabelStyle}">Numer telefonu</Label>
+        <Label Grid.Row="8" Grid.Column="1" Style="{StaticResource LabelStyle}">Adres e-mail</Label>
+        <textBoxWithPlaceholder:IntTextBox Grid.Row="9" Grid.Column="0" Text="{Binding PhoneNumber , Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.PhoneNumberPlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="9" Grid.Column="1" Text="{Binding Email, Mode=OneWayToSource}" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.EmailAddressPlaceholder}, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
+        <Button Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding CloseAddCrewMemberCommand}" CommandParameter="{Binding ElementName=addCrewMemberWindow}" Margin="100,5,100,5" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">Dodaj pracownika</Button>
+    </Grid>
+</Window>

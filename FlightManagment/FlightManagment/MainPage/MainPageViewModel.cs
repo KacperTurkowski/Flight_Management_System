@@ -1,12 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 using FlightManagement.AirPlanesPage;
+using FlightManagement.Crew;
 
 namespace FlightManagement.MainPage
 {
     public class MainPageViewModel
     {
         public AirPlanesListViewModel AirPlanesListViewModel { get; set; }
-
+        public CrewViewModel CrewViewModel { get; set; }
         public MainPageViewModel()
         {
             AirPlanesListViewModel = new AirPlanesListViewModel
@@ -18,6 +19,7 @@ namespace FlightManagement.MainPage
                     new AirplaneViewModel() { Name = "3" },
                 }
             };
+            CrewViewModel = new CrewViewModel();
         }
     }
 }
