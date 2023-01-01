@@ -4,5 +4,6 @@ public enum PositionEnum
 {
     Pilot,
     Controller,
-    Steward
+    Steward,
+    Admin
 }

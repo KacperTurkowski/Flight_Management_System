@@ -1,7 +1,6 @@
-﻿using FlightManagement.AirPlanesPage.AirplaneInfo;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
-namespace FlightManagement.AirPlanesPage;
+namespace FlightManagement.Base.ViewModels.Airplane;
 
 public class AirplaneViewModel
 {
@@ -13,5 +12,5 @@ public class AirplaneViewModel
     public int MaxWeight { get; set; }
     public int MaxPassengers { get; set; }
     public int FuelUsage { get; set; }
-    public ICommand DeleteAirplaneCommand { get; } = new DeleteAirplaneCommand();
+    public ICommand DeleteAirplaneCommand { get; set; }
 }

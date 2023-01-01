@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using FlightManagement.Base.Position;
-using FlightManagement.Crew.AddCrewMember;
-using FlightManagement.Crew.CrewMemberInfo;
 
-namespace FlightManagement.Crew;
+namespace FlightManagement.Base.ViewModels.Crew;
 
 public class CrewMemberViewModel
 {
@@ -25,23 +21,21 @@ public class CrewMemberViewModel
     public ICommand CloseAddCrewMemberCommand { get; set; }
     public ICommand DeleteCrewMemberCommand { get; set; }
 
-    public string NameWithPosition => string.Concat(Position,": ",FirstName," ", LastName);
+    public string NameWithPosition => string.Concat(Position, ": ", FirstName, " ", LastName);
     public string FullName => string.Concat(FirstName, " ", LastName);
     public string FullAddress => string.Concat(Street, " ", HouseNumber, ", ", PostalCode, " ", City);
 
     public CrewMemberViewModel()
     {
         Positions = GetPositionsString();
-        CloseAddCrewMemberCommand = new CloseAddCrewMemberCommand();
-        DeleteCrewMemberCommand = new DeleteCrewMemberCommand();
     }
 
     public static ObservableCollection<string> GetPositionsString()
     {
-        var values = Enum.GetValues(typeof(PositionEnum)).Cast<PositionEnum>().ToList();
+        var values = Enum.GetValues(typeof(PositionEnum)).Cast<PositionEnum>().Except(new[] { PositionEnum.Admin }).ToList();
         var result = new ObservableCollection<string>();
 
-        foreach (var positionEnum in values) 
+        foreach (var positionEnum in values)
             result.Add(PositionToStringMapper.MapTo(positionEnum));
 
         return result;

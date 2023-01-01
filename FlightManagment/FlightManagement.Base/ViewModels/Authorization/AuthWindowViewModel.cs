@@ -1,15 +1,13 @@
-﻿using FlightManagement.Base.Authentication;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace FlightManagement.Authentication
+namespace FlightManagement.Base.ViewModels.Authorization
 {
     public class AuthWindowViewModel : INotifyPropertyChanged
     {
         private string _login;
         private string _password;
-        private ICommand _loginCommand;
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public string Login
@@ -34,21 +32,8 @@ namespace FlightManagement.Authentication
             }
         }
 
-        public ICommand LoginCommand
-        {
-            get => _loginCommand;
-            set
-            {
-                if (Equals(value, _loginCommand)) return;
-                _loginCommand = value;
-                OnPropertyChanged();
-            }
-        }
+        public ICommand LoginCommand { get; set; }
 
-        public AuthWindowViewModel(AccountDataProvider accountDataProvider)
-        {
-            _loginCommand = new LoginCommand(accountDataProvider);
-        }
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

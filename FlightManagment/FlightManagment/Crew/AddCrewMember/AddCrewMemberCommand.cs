@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Input;
+using FlightManagement.Base.Authentication;
+using FlightManagement.Base.ViewModels.Crew;
+using FlightManagement.ViewModelsFactories.Crew;
 
 namespace FlightManagement.Crew.AddCrewMember
 {
@@ -17,13 +20,15 @@ namespace FlightManagement.Crew.AddCrewMember
         public void Execute(object? parameter)
         {
             var addCrewMember = new AddCrewMember();
-            var crewMemberViewModel = new CrewMemberViewModel();
+            var crewMemberViewModel = CrewMemberViewModelFactory.Create();
             addCrewMember.DataContext = crewMemberViewModel;
             var result = addCrewMember.ShowDialog();
 
             if (result == true)
+            {
+                new CrewMemberRepository().SaveCrewMember(crewMemberViewModel);
                 _crewViewModel.CrewList.Add(crewMemberViewModel);
-
+            }
             _crewViewModel.OnPropertyChanged();
             _crewViewModel.OnPropertyChanged(nameof(_crewViewModel.CrewList));
             _crewViewModel.OnPropertyChanged(nameof(_crewViewModel.FilteredCrewList));

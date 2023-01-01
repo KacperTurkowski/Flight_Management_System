@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
+using FlightManagement.Base.ViewModels.Airplane;
+using FlightManagement.ViewModelsFactories.Airplane;
 
 namespace FlightManagement.AirPlanesPage.AddPlane
 {
@@ -17,7 +19,7 @@ namespace FlightManagement.AirPlanesPage.AddPlane
         public void Execute(object? parameter)
         {
             var addPlaneWindow = new AddPlaneWindow();
-            var viewModel = new AddPlaneViewModel();
+            var viewModel = AddPlaneViewModelFactory.Create();
             addPlaneWindow.DataContext = viewModel;
             var result = addPlaneWindow.ShowDialog();
 
@@ -29,15 +31,14 @@ namespace FlightManagement.AirPlanesPage.AddPlane
 
         private AirplaneViewModel MapToAirplane(AddPlaneViewModel viewModel)
         {
-            return new AirplaneViewModel
-            {
-                Name = viewModel.Name,
-                Producer = viewModel.Producer,
-                IsNarrowBody = viewModel.IsNarrowBody,
-                MaxPassengers = viewModel.MaxPassengers,
-                MaxWeight = viewModel.MaxPassengers,
-                FuelUsage = viewModel.FuelUsage
-            };
+            var result = AirplaneViewModelFactory.Create();
+            result.Name = viewModel.Name;
+            result.Producer = viewModel.Producer;
+            result.IsNarrowBody = viewModel.IsNarrowBody;
+            result.MaxPassengers = viewModel.MaxPassengers;
+            result.MaxWeight = viewModel.MaxPassengers;
+            result.FuelUsage = viewModel.FuelUsage;
+            return result;
         }
 
         public event EventHandler? CanExecuteChanged { add { } remove { } }

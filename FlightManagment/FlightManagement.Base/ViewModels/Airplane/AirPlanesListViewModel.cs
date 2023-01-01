@@ -2,10 +2,8 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using FlightManagement.AirPlanesPage.AddPlane;
-using FlightManagement.AirPlanesPage.AirplaneInfo;
 
-namespace FlightManagement.AirPlanesPage;
+namespace FlightManagement.Base.ViewModels.Airplane;
 
 public class AirPlanesListViewModel : INotifyPropertyChanged
 {
@@ -48,8 +46,6 @@ public class AirPlanesListViewModel : INotifyPropertyChanged
     public AirPlanesListViewModel()
     {
         Airplanes = new ObservableCollection<AirplaneViewModel>();
-        AddPlaneCommand = new AddPlaneCommand(this);
-        OpenAirplaneInfoCommand = new OpenAirplaneInfoCommand(this);
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

@@ -7,17 +7,22 @@
         xmlns:flightManagement="clr-namespace:FlightManagement"
         xmlns:textBoxWithPlaceholder="clr-namespace:FlightManagement.TextBoxWithPlaceholder"
         mc:Ignorable="d"
-        Title="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}" Height="250" Width="400" ResizeMode="NoResize" x:Name="AuthWindow1">
-    <Grid>
+        Title="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}" Height="270" Width="400" ResizeMode="NoResize" x:Name="AuthWindow1">
+    <Grid Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <flightManagement:Header Grid.Row="0"/>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}}" VerticalAlignment="Stretch">
-            <textBoxWithPlaceholder:TextBoxWithPlaceholder Placeholder="{Binding Source={x:Static viewConstants:StringStatic.LoginPlaceholder}, Mode=OneWay}" Width="250" Height="30" Margin="10,20,10,10" Text="{Binding Login}" VerticalContentAlignment="Center"></textBoxWithPlaceholder:TextBoxWithPlaceholder>
-            <textBoxWithPlaceholder:TextBoxWithPlaceholder Placeholder="{Binding Source={x:Static viewConstants:StringStatic.PasswordPlaceholder}, Mode=OneWay}" Width="250" Height="30" Margin="10" Text="{Binding Password}" VerticalContentAlignment="Center"></textBoxWithPlaceholder:TextBoxWithPlaceholder>
-            <Button Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=AuthWindow1}" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}" Width="100" Height="30">Zaloguj</Button>
-        </StackPanel>
+        <Label Grid.Row="1" HorizontalAlignment="Center">Login</Label>
+        <TextBox Grid.Row="2" Width="250" Height="30" Text="{Binding Login}"  VerticalContentAlignment="Center" BorderThickness="0"/>
+        <Label  Grid.Row="3" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center">Hasło</Label>
+        <PasswordBox  Grid.Row="4" x:Name="PasswordBox" Width="250" Height="30" PasswordChar="*"  VerticalContentAlignment="Center" BorderThickness="0"/>
+        <Button  Grid.Row="5" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=AuthWindow1}" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}" Width="100" Height="30">Zaloguj</Button>
+
     </Grid>
 </Window>

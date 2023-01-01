@@ -18,6 +18,6 @@ namespace FlightManagement.AirPlanesPage.AddPlane
             addPlaneWindow.Close();
         }
 
-        public event EventHandler? CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged { add{} remove{} }
     }
 }

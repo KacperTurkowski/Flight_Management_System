@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using FlightManagement.Base.ViewModels.Crew;
 
 namespace FlightManagement.Crew.CrewMemberInfo
 {
