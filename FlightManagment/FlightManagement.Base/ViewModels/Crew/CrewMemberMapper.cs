@@ -1,4 +1,5 @@
-﻿using FlightManagement.Data.Models;
+﻿using FlightManagement.Base.Position;
+using FlightManagement.Data.Models;
 
 namespace FlightManagement.Base.ViewModels.Crew;
 
@@ -14,10 +15,11 @@ public class CrewMemberMapper
             CrwLastName = crewMember.LastName,
             CrwHouseNumber = crewMember.HouseNumber,
             CrwPhoneNumber = crewMember.PhoneNumber,
-            CrwPosition = crewMember.Position,
+            CrwPosition = crewMember.PositionEnum.ToString(),
             CrwPostalCode = crewMember.PostalCode,
             CrwSocialSecurityNumber = crewMember.SocialSecurityNumber,
-            CrwStreet = crewMember.Street
+            CrwStreet = crewMember.Street,
+            CrwIsActive = crewMember.IsActive
         };
     }
 
@@ -31,10 +33,12 @@ public class CrewMemberMapper
             LastName = crewMember.CrwLastName,
             HouseNumber = crewMember.CrwHouseNumber,
             PhoneNumber = crewMember.CrwPhoneNumber,
-            Position = crewMember.CrwPosition,
+            Position = PositionToStringMapper.Translate(crewMember.CrwPosition),
             PostalCode = crewMember.CrwPostalCode,
             SocialSecurityNumber = crewMember.CrwSocialSecurityNumber,
-            Street = crewMember.CrwStreet
+            Street = crewMember.CrwStreet,
+            IsActive = crewMember.CrwIsActive,
+            Id = crewMember.CrwId
         };
     }
 }

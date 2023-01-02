@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using FlightManagement.Authentication;
 using FlightManagement.Base.Authentication;
-using FlightManagement.Base.ViewModels;
+using FlightManagement.Base.Position;
 using FlightManagement.MainPage;
 using FlightManagement.ViewModelsFactories;
 using FlightManagement.ViewModelsFactories.Crew;
@@ -15,15 +14,13 @@ namespace FlightManagement
     public partial class MainWindow : Window
     {
         private readonly AccountDataProvider _accountDataProvider;
-
+        public int SwitchView { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             _accountDataProvider = new AccountDataProvider();
-            mainPage.DataContext = MainPageViewModelFactory.Create();
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e) => (sender as Button)!.Content = _accountDataProvider.Login;
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -31,13 +28,26 @@ namespace FlightManagement
             {
                 DataContext = AuthWindowViewModelFactory.Create(_accountDataProvider)
             };
-            this.Hide();
+            Hide();
             var loggingResult = authWindow.ShowDialog();
-            
-            if(loggingResult == true)
-                this.Show();
+
+            if (loggingResult == true)
+                Show();
             else
-                this.Close();
+                Close();
+
+            if (_accountDataProvider.Position == PositionEnum.Controller)
+            {
+                SwitchView = 0;
+                DataContext = ControllerMainPageViewModelFactory.Create();
+            }
+            else
+            {
+                SwitchView = 1;
+                DataContext = MainPageViewModelFactory.Create();
+            }
+                
+            
         }
     }
 }

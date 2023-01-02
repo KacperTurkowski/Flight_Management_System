@@ -1,11 +1,14 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using FlightManagement.Base.Position;
 
 namespace FlightManagement.Base.ViewModels.Crew;
 
-public class CrewMemberViewModel
+public class CrewMemberViewModel : INotifyPropertyChanged
 {
+    public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public ObservableCollection<string> Positions { get; set; }
@@ -18,6 +21,7 @@ public class CrewMemberViewModel
     public string City { get; set; }
     public int PhoneNumber { get; set; }
     public string Email { get; set; }
+    public bool IsActive { get; set; } = true;
     public ICommand CloseAddCrewMemberCommand { get; set; }
     public ICommand DeleteCrewMemberCommand { get; set; }
 
@@ -39,5 +43,12 @@ public class CrewMemberViewModel
             result.Add(PositionToStringMapper.MapTo(positionEnum));
 
         return result;
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

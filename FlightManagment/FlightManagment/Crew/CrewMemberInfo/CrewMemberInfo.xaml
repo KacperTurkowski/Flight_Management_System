@@ -46,6 +46,6 @@
         <TextBox Grid.Row="9" Text="{Binding PhoneNumber, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"></TextBox>
         <Label Grid.Row="10" Style="{StaticResource LabelStyle}">Adres e-mail</Label>
         <TextBox Grid.Row="11" Text="{Binding Email, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"></TextBox>
-        <Button Grid.Row="12" Command="{Binding DeleteCrewMemberCommand}" CommandParameter="{Binding ElementName=crewMemberInfo}" Margin="100,5,100,5" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">Usuń samolot</Button>
+        <Button Grid.Row="12" Command="{Binding DeleteCrewMemberCommand}" CommandParameter="{Binding ElementName=crewMemberInfo}" Margin="100,5,100,5" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">Dezaktywuj użytkownika</Button>
     </Grid>
 </Window>

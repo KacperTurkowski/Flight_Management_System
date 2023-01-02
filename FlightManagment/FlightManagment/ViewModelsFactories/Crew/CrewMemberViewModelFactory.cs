@@ -15,5 +15,12 @@ namespace FlightManagement.ViewModelsFactories.Crew
                 DeleteCrewMemberCommand = new DeleteCrewMemberCommand()
             };
         }
+
+        public static void Fill(CrewMemberViewModel crewMemberViewModel)
+        {
+            crewMemberViewModel.CloseAddCrewMemberCommand = new CloseAddCrewMemberCommand();
+            crewMemberViewModel.DeleteCrewMemberCommand = new DeleteCrewMemberCommand();
+
+        }
     }
 }

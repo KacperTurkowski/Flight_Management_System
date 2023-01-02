@@ -24,9 +24,7 @@ namespace FlightManagement.Crew.CrewMemberInfo
             {
                 DataContext = crewMemberViewModel
             };
-            var toRemove = window.ShowDialog();
-            if (toRemove == true)
-                _crewViewModel.CrewList.Remove(crewMemberViewModel);
+            window.ShowDialog();
 
             _crewViewModel.OnPropertyChanged();
             _crewViewModel.OnPropertyChanged(nameof(_crewViewModel.CrewList));

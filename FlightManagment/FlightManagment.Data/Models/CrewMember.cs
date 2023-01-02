@@ -25,4 +25,10 @@ public partial class CrewMember
     public string CrwEmail { get; set; } = null!;
 
     public string? CrwPassword { get; set; }
+
+    public bool CrwIsActive { get; set; }
+
+    public virtual ICollection<CrewToFlightAssoc> CrewToFlightAssocs { get; } = new List<CrewToFlightAssoc>();
+
+    public virtual ICollection<Flight> Flights { get; } = new List<Flight>();
 }

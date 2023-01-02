@@ -1,6 +1,7 @@
 ﻿using FlightManagement.Base.ViewModels;
 using FlightManagement.ViewModelsFactories.Airplane;
 using FlightManagement.ViewModelsFactories.Crew;
+using FlightManagement.ViewModelsFactories.Flights;
 
 namespace FlightManagement.ViewModelsFactories
 {
@@ -11,7 +12,8 @@ namespace FlightManagement.ViewModelsFactories
             return new MainPageViewModel()
             {
                 AirPlanesListViewModel = AirPlanesListViewModelFactory.Create(),
-                CrewViewModel = CrewViewModelFactory.Create()
+                CrewViewModel = CrewViewModelFactory.Create(),
+                FlightsListViewModel = FlightsListViewModelFactory.Create()
             };
         }
     }

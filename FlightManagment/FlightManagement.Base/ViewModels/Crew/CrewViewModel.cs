@@ -99,6 +99,8 @@ public class CrewViewModel : INotifyPropertyChanged
         var result = new ObservableCollection<CrewMemberViewModel>();
         foreach (var crewMemberViewModel in CrewList)
         {
+            if (!crewMemberViewModel.IsActive)
+                continue;
             if (IsShowAllChecked)
             {
                 result.Add(crewMemberViewModel);

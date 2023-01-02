@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using FlightManagement.Base.Airplanes;
 using FlightManagement.Base.ViewModels.Airplane;
 using FlightManagement.ViewModelsFactories.Airplane;
 
@@ -8,10 +9,12 @@ namespace FlightManagement.AirPlanesPage.AddPlane
     public class AddPlaneCommand : ICommand
     {
         private readonly AirPlanesListViewModel _airPlanesListViewModel;
+        private readonly AirPlanesRepository _airPlanesRepository;
 
         public AddPlaneCommand(AirPlanesListViewModel airplaneListViewModel)
         {
             _airPlanesListViewModel = airplaneListViewModel;
+            _airPlanesRepository = new AirPlanesRepository();
         }
 
         public bool CanExecute(object? parameter) => true;
@@ -23,8 +26,11 @@ namespace FlightManagement.AirPlanesPage.AddPlane
             addPlaneWindow.DataContext = viewModel;
             var result = addPlaneWindow.ShowDialog();
 
-            if(result == true)
+            if (result == true)
+            {
+                _airPlanesRepository.SaveAirPlane(MapToAirplane(viewModel));
                 _airPlanesListViewModel.Airplanes.Add(MapToAirplane(viewModel));
+            }
 
             _airPlanesListViewModel.OnPropertyChanged();
         }
