@@ -39,7 +39,7 @@ namespace FlightManagement
             if (_accountDataProvider.Position == PositionEnum.Controller)
             {
                 SwitchView = 0;
-                DataContext = ControllerMainPageViewModelFactory.Create();
+                DataContext = ControllerMainPageViewModelFactory.Create(_accountDataProvider);
             }
             else
             {

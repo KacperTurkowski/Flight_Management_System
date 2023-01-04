@@ -25,31 +25,37 @@ namespace FlightManagement.Flights
             FlightViewModelFactory.Refresh(_viewModel);
             if (_viewModel.IsConfigured)
             {
-                if (_accountDataProvider.Position == PositionEnum.Controller)
+                var window = new ConfiguredFlightWindow
                 {
-                    var window = new ConfiguredFlightWindow
-                    {
-                        DataContext = _viewModel
-                    };
-                    var toRemove = window.ShowDialog();
-                    if (toRemove == true)
-                    {
-                        //usuwanie
-                    }
-                }
-                else
+                    DataContext = _viewModel
+                };
+                var toRemove = window.ShowDialog();
+                if (toRemove == true)
                 {
-                    MessageBox.Show("Hello");
+                    //TODO usuwanie
                 }
             }
             else
             {
-                var window = new FlightConfigurationWindow()
+                if (_accountDataProvider.Position == PositionEnum.Controller)
                 {
-                    DataContext = _viewModel
-                };
-                window.ShowDialog();
-                //zapisywanie
+                    var window = new FlightConfigurationWindow()
+                    {
+                        DataContext = _viewModel
+                    };
+                    window.ShowDialog();
+                    //TODO zapisywanie
+                }
+                else
+                {
+                    var window = new NotConfiguredFlightAdminView()
+                    {
+                        DataContext = _viewModel
+                    };
+                    window.ShowDialog();
+                    //TODO usuwanie
+                }
+
             }
             
         }
