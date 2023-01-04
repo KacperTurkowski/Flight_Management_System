@@ -24,6 +24,8 @@ public partial class Flight
 
     public int? CrwId { get; set; }
 
+    public int? FliTicketPrice { get; set; }
+
     public virtual AirPlane? Aip { get; set; }
 
     public virtual ICollection<CrewToFlightAssoc> CrewToFlightAssocs { get; } = new List<CrewToFlightAssoc>();

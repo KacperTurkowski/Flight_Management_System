@@ -19,7 +19,11 @@
         public static string CityPlaceholder { get; set; } = "podaj miasto";
         public static string PhoneNumberPlaceholder { get; set; } = "podaj numer telefonu";
         public static string EmailAddressPlaceholder { get; set; } = "podaj adres e-mail";
-
-
+        public static string StartAirportPlaceholder { get; set; } = "podaj lotnisko startowe";
+        public static string EndAirportPlaceholder { get; set; } = "podaj lotnisko docelowe";
+        public static string StartPlacePlaceholder { get; set; } = "podaj miasto wylotu";
+        public static string EndPlacePlaceholder { get; set; } = "podaj miasto docelowe";
+        public static string LengthPlaceholder { get; set; } = "podaj odległość w kilometrach";
+        public static string TicketPricePlaceholder { get; set; } = "podaj cenę za bilet";
     }
 }

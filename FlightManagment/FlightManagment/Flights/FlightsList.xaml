@@ -7,12 +7,15 @@
              xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <local:FlightColorConverter x:Key="flightColorConverter"/>
+    </UserControl.Resources>
     <Border BorderThickness="2" BorderBrush="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">
         <ScrollViewer  VerticalScrollBarVisibility="Auto">
             <ItemsControl  ItemsSource="{Binding Flights}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button HorizontalContentAlignment="Stretch" Background="DarkGray" Margin="10" BorderThickness="0" Command="{Binding OpenDetailCommand}" HorizontalAlignment="Stretch">
+                        <Button HorizontalContentAlignment="Stretch" Background="{Binding IsConfigured, Converter={StaticResource flightColorConverter}}" Margin="10" BorderThickness="0" Command="{Binding OpenFlightWindowCommand}" HorizontalAlignment="Stretch">
                             <Grid HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.3*"/>

@@ -142,6 +142,7 @@ public partial class FlightManagementDbContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("FLI_StartPlace");
+            entity.Property(e => e.FliTicketPrice).HasColumnName("FLI_TicketPrice");
 
             entity.HasOne(d => d.Aip).WithMany(p => p.Flights)
                 .HasForeignKey(d => d.AipId)

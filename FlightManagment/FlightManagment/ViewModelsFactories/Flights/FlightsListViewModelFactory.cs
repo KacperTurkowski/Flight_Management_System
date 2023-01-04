@@ -11,7 +11,7 @@ namespace FlightManagement.ViewModelsFactories.Flights
 {
     public class FlightsListViewModelFactory
     {
-        public static FlightsListViewModel Create()
+        public static FlightsListViewModel Create(AccountDataProvider accountDataProvider)
         {
             var flights = new ObservableCollection<FlightViewModel>();
             var crewMemberRepository = new CrewMemberRepository();
@@ -19,6 +19,7 @@ namespace FlightManagement.ViewModelsFactories.Flights
             foreach (var flight in new FlightsRepository().GetAllFlights())
             {
                 var flightViewModel = FlightMapper.MapTo(flight);
+                FlightViewModelFactory.Fill(flightViewModel, accountDataProvider);
                 if (flightViewModel.PilotId.HasValue)
                 {
                     var pilot = crewMemberRepository.TryGetById(flightViewModel.PilotId.Value);

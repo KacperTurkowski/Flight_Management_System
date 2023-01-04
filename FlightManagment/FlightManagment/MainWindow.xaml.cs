@@ -44,7 +44,7 @@ namespace FlightManagement
             else
             {
                 SwitchView = 1;
-                DataContext = MainPageViewModelFactory.Create();
+                DataContext = MainPageViewModelFactory.Create(_accountDataProvider);
             }
                 
             

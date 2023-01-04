@@ -17,7 +17,8 @@ namespace FlightManagement.Base.ViewModels.Flights
                 FliSoldTickets = flight.SoldTickets,
                 FliSoldCargo = flight.SoldCargo,
                 CrwId = flight.PilotId,
-                AipId = flight.AirplaneId
+                AipId = flight.AirplaneId,
+                FliTicketPrice = flight.TicketPrice
             };
         }
 
@@ -34,7 +35,8 @@ namespace FlightManagement.Base.ViewModels.Flights
                 SoldTickets = flight.FliSoldTickets,
                 SoldCargo = flight.FliSoldCargo,
                 PilotId = flight.CrwId,
-                AirplaneId = flight.AipId
+                AirplaneId = flight.AipId,
+                TicketPrice = flight.FliTicketPrice
             };
         }
     }

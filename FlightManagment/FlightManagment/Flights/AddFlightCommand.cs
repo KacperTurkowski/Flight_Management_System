@@ -20,7 +20,7 @@ namespace FlightManagement.Flights
         public void Execute(object? parameter)
         {
             var window = new AddFlightWindow();
-            var viewModel = FlightViewModelFactory.Create();
+            var viewModel = FlightViewModelFactory.Create(_flightsListViewModel.AccountDataProvider);
             window.DataContext = viewModel;
             var result = window.ShowDialog();
             if (result == true)

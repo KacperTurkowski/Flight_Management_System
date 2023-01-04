@@ -1,0 +1,76 @@
+﻿<Window x:Class="FlightManagement.Flights.FlightConfigurationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
+        xmlns:textBoxWithPlaceholder="clr-namespace:FlightManagement.TextBoxWithPlaceholder"
+        xmlns:crewSelection="clr-namespace:FlightManagement.Flights.CrewSelection"
+        mc:Ignorable="d"
+        Title="FlightConfigurationWindow" Height="440" Width="800" ResizeMode="NoResize" x:Name="flightConfigurationWindow">
+    <Grid Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Text="{Binding Title, Mode=OneWay}" Margin="5" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="1" VerticalAlignment="Bottom">Miejsce startowe</Label>
+            <TextBox Grid.Row="2" Text="{Binding StartPlace, Mode=OneWay}" Margin="5" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="3" VerticalAlignment="Bottom">Miejsce docelowe</Label>
+            <TextBox Grid.Row="4" Text="{Binding EndPlace, Mode=OneWay}" Margin="5" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="5" VerticalAlignment="Bottom">Odległość</Label>
+            <TextBox Grid.Row="6" Text="{Binding FlightLength, Mode=OneWay}" Margin="5" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="7" VerticalAlignment="Bottom">Data</Label>
+            <TextBox Grid.Row="8" Text="{Binding Date, Mode=OneWay}" Margin="5" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="9" VerticalAlignment="Bottom">Godzina</Label>
+            <TextBox Grid.Row="10" Text="{Binding Time, Mode=OneWay}" Margin="5" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center"/>
+        </Grid>
+        <Line Grid.Row="0" Grid.Column="1" X1="2" Y1="10" X2="2" Y2="340" Stroke="Black"/>
+        
+        
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom">Samolot</Label>
+            <ComboBox Grid.Row="1" Grid.Column="0" Margin="5" ItemsSource="{Binding AvailableAirplanes}" SelectedItem="{Binding Airplane}" DisplayMemberPath="Name" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom">Cena za bilet</Label>
+            <textBoxWithPlaceholder:IntTextBox Grid.Row="3" Grid.Column="0" Text="{Binding TicketPrice}" Margin="5" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.TicketPricePlaceholder}, Mode=OneWay}"/>
+            <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom">Pilot</Label>
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding AvailablePilots}" SelectedItem="{Binding Pilot}" DisplayMemberPath="FullName" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom">Załoga</Label>
+            <crewSelection:CrewSelectionControl  Grid.Row="3" Grid.Column="1" Grid.RowSpan="3" Margin="0,0,0,-170"/>
+        </Grid>
+
+        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="30" Command="{Binding SaveConfigurationCommand}" CommandParameter="{Binding ElementName=flightConfigurationWindow}" Margin="100,10,100,5" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">Zapisz konfigurację</Button>
+
+    </Grid>
+</Window>

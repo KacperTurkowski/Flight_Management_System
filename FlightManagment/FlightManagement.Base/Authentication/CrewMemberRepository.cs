@@ -32,6 +32,18 @@ public class CrewMemberRepository
                                                 x.CrwPosition == Position.PositionEnum.Controller.ToString())&& x.CrwIsActive == true).ToList();
     }
 
+    public List<CrewMember> GetAllPilots()
+    {
+        using var dbContext = new FlightManagementDbContext();
+        return dbContext.CrewMembers.Where(x => x.CrwPosition == Position.PositionEnum.Pilot.ToString() && x.CrwIsActive == true).ToList();
+    }
+
+    public List<CrewMember> GetAllStewards()
+    {
+        using var dbContext = new FlightManagementDbContext();
+        return dbContext.CrewMembers.Where(x => x.CrwPosition == Position.PositionEnum.Steward.ToString() && x.CrwIsActive == true).ToList();
+    }
+
     public void Update(CrewMemberViewModel crewMemberViewModel)
     {
         using var dbContext = new FlightManagementDbContext();

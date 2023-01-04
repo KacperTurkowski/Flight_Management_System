@@ -24,14 +24,14 @@
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding StartAirport}"/>
-        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding EndAirport}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="0" Grid.Column="0" Placeholder="{Binding Source={x:Static viewConstants:StringStatic.StartAirportPlaceholder}, Mode=OneWay}" Margin="5" Text="{Binding StartAirport}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="0" Grid.Column="1"  Placeholder="{Binding Source={x:Static viewConstants:StringStatic.EndAirportPlaceholder}, Mode=OneWay}" Margin="5" Text="{Binding EndAirport}"/>
         <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">Miejsce startowe</Label>
-        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Text="{Binding StartPlace}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Placeholder="{Binding Source={x:Static viewConstants:StringStatic.StartPlacePlaceholder}, Mode=OneWay}" Margin="5" Text="{Binding StartPlace}"/>
         <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">Miejsce docelowe</Label>
-        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Text="{Binding EndPlace}"/>
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Placeholder="{Binding Source={x:Static viewConstants:StringStatic.EndPlacePlaceholder}, Mode=OneWay}" Margin="5" Text="{Binding EndPlace}"/>
         <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">Odległość</Label>
-        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
+        <textBoxWithPlaceholder:TextBoxWithPlaceholder Grid.Row="6" Grid.Column="0"  Placeholder="{Binding Source={x:Static viewConstants:StringStatic.LengthPlaceholder}, Mode=OneWay}" Grid.ColumnSpan="2" Margin="5" />
         <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">Data</Label>
         <DatePicker Grid.Row="8" Grid.Column="0" Margin="5,0,5,0" SelectedDate="{Binding StartDate}"/>
         <Grid Grid.Row="8" Grid.Column="1">

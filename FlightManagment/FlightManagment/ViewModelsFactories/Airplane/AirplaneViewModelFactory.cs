@@ -12,4 +12,9 @@ public class AirplaneViewModelFactory
             DeleteAirplaneCommand = new DeleteAirplaneCommand()
         };
     }
+
+    public static void Fill(AirplaneViewModel airplaneViewModel)
+    {
+        airplaneViewModel.DeleteAirplaneCommand = new DeleteAirplaneCommand();
+    }
 }
