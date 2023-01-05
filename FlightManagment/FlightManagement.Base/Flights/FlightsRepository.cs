@@ -27,7 +27,7 @@ namespace FlightManagement.Base.Flights
         public List<Flight> GetAllHistoryFlights()
         {
             using var dbContext = new FlightManagementDbContext();
-            return dbContext.Flights.Where(x => x.FliStartDate < DateTime.Now)
+            return dbContext.Flights.Where(x => x.FliStartDate < DateTime.Now && x.CrwId.HasValue)
                 .Include(x => x.CrewToFlightAssocs)
                 .ThenInclude(x => x.Crw).OrderBy(x => x.FliStartDate).ToList();
         }

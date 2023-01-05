@@ -1,5 +1,7 @@
 ﻿using FlightManagement.Base.ViewModels.Crew;
 using FlightManagement.Data.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace FlightManagement.Base.Authentication;
 
@@ -34,16 +36,53 @@ public class CrewMemberRepository
                                                 x.CrwPosition == Position.PositionEnum.Controller.ToString())&& x.CrwIsActive == true).ToList();
     }
 
-    public List<CrewMember> GetAllPilots()
+    public List<CrewMember> GetAllFreePilots(DateTime dateTime)
     {
+
         using var dbContext = new FlightManagementDbContext();
-        return dbContext.CrewMembers.Where(x => x.CrwPosition == Position.PositionEnum.Pilot.ToString() && x.CrwIsActive == true).ToList();
+        var allPilots = dbContext.CrewMembers.Where(x => x.CrwPosition == Position.PositionEnum.Pilot.ToString() && x.CrwIsActive == true).Include(x=>x.Flights).ToList();
+
+        var result = new List<CrewMember>();
+        foreach (var crewMember in allPilots)
+        {
+            var checkAvaible = true;
+            foreach (var flights in crewMember.Flights)
+            {
+                if (dateTime.AddHours(-2) < flights.FliStartDate && flights.FliStartDate < dateTime.AddHours(+2))
+                {
+                    checkAvaible = false;
+                    break;
+                }
+            }
+            if(checkAvaible)
+                result.Add(crewMember);
+        }
+
+        return result;
     }
 
-    public List<CrewMember> GetAllStewards()
+    public List<CrewMember> GetAllFreeStewards(DateTime dateTime)
     {
         using var dbContext = new FlightManagementDbContext();
-        return dbContext.CrewMembers.Where(x => x.CrwPosition == Position.PositionEnum.Steward.ToString() && x.CrwIsActive == true).ToList();
+        var allCrewMembers = dbContext.CrewMembers.Where(x => x.CrwPosition == Position.PositionEnum.Steward.ToString() && x.CrwIsActive == true).ToList();
+        var allFlights = dbContext.CrewToFlightAssocs.Include(x => x.Fli).ToList();
+        var result = new List<CrewMember>();
+        foreach (var crewMember in allCrewMembers)
+        {
+            var checkAvaible = true;
+            foreach (var flights in allFlights.Where(x=>x.CrwId == crewMember.CrwId))
+            {
+                if (dateTime.AddHours(-2) < flights.Fli.FliStartDate && flights.Fli.FliStartDate < dateTime.AddHours(+2))
+                {
+                    checkAvaible = false;
+                    break;
+                }
+            }
+            if (checkAvaible)
+                result.Add(crewMember);
+        }
+
+        return result;
     }
 
     public void Update(CrewMemberViewModel crewMemberViewModel)

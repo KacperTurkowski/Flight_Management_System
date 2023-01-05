@@ -42,8 +42,8 @@ namespace FlightManagement.ViewModelsFactories.Flights
         private static void InitializeCollections(FlightViewModel viewModel)
         {
             var repository = new CrewMemberRepository();
-            var pilots = repository.GetAllPilots();
-            var stewards = repository.GetAllStewards();
+            var pilots = repository.GetAllFreePilots(viewModel.StartDate);
+            var stewards = repository.GetAllFreeStewards(viewModel.StartDate);
             var airplanes = new AirPlanesRepository().GetAirplanes();
 
             viewModel.AvailablePilots = new ObservableCollection<CrewMemberViewModel>();
