@@ -21,7 +21,15 @@ namespace FlightManagement.Base.Flights
             using var dbContext = new FlightManagementDbContext();
             return dbContext.Flights.Where(x=>x.FliStartDate>DateTime.Now)
                 .Include(x=>x.CrewToFlightAssocs)
-                .ThenInclude(x=>x.Crw).ToList();
+                .ThenInclude(x=>x.Crw).OrderBy(x=>x.FliStartDate).ToList();
+        }
+
+        public List<Flight> GetAllHistoryFlights()
+        {
+            using var dbContext = new FlightManagementDbContext();
+            return dbContext.Flights.Where(x => x.FliStartDate < DateTime.Now)
+                .Include(x => x.CrewToFlightAssocs)
+                .ThenInclude(x => x.Crw).OrderBy(x => x.FliStartDate).ToList();
         }
 
         public void FillFlight(FlightViewModel viewModel)
@@ -30,6 +38,7 @@ namespace FlightManagement.Base.Flights
             var dbEntity = dbContext.Flights.Single(x => x.FliId == viewModel.ID);
             dbEntity.AipId = viewModel.Airplane.AirplaneId;
             dbEntity.CrwId = viewModel.Pilot!.Id;
+            dbEntity.FliTicketPrice = viewModel.TicketPrice;
 
 
             foreach (var crewMemberViewModel in viewModel.Crew)
@@ -40,8 +49,14 @@ namespace FlightManagement.Base.Flights
                     FliId = viewModel.ID!.Value
                 });
             }
+             
+            var rnd = new Random();
+            dbEntity.FliSoldCargo = rnd.Next(0, viewModel.Airplane.MaxWeight);
+            dbEntity.FliSoldTickets = rnd.Next(0, viewModel.Airplane.MaxPassengers);
 
             dbContext.SaveChanges();
+            viewModel.SoldCargo = dbEntity.FliSoldCargo;
+            viewModel.SoldTickets = dbEntity.FliSoldTickets;
             viewModel.PilotId = viewModel.Pilot.Id;
             viewModel.AirplaneId = viewModel.Airplane.AirplaneId;
         }

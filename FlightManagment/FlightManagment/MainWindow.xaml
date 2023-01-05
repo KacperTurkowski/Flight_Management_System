@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mainPage="clr-namespace:FlightManagement.MainPage"
         xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
+        xmlns:flightManagement="clr-namespace:FlightManagement"
         mc:Ignorable="d"
-        Title="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}" Height="450" Width="800"  MinHeight="350" MinWidth="600"  Loaded="MainWindow_OnLoaded">
+        Title="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}" Height="450" Width="800"  MinHeight="350" MinWidth="600"  Loaded="MainWindow_OnLoaded" x:Name="mainWindow">
 
     <Window.Resources>
         <DataTemplate x:Key="AdminPage">
@@ -19,7 +20,13 @@
     </Window.Resources>
 
     <Grid>
-        <ContentControl Content="{Binding }">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <flightManagement:Header LogOutVisibility="Visible" Grid.Row="0" DataContext="{Binding ElementName=mainWindow}"/>
+
+        <ContentControl Grid.Row="1" Content="{Binding }">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Style.Triggers>

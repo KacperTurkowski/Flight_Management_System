@@ -6,6 +6,7 @@ using FlightManagement.Base.ViewModels.Airplane;
 using FlightManagement.Base.ViewModels.Crew;
 using FlightManagement.Base.ViewModels.Flights;
 using FlightManagement.Flights;
+using FlightManagement.FlightsHistory;
 using FlightManagement.ViewModelsFactories.Airplane;
 using FlightManagement.ViewModelsFactories.Crew;
 
@@ -17,6 +18,7 @@ namespace FlightManagement.ViewModelsFactories.Flights
         {
             var viewModel = new FlightViewModel();
             InitializeCommands(viewModel, accountDataProvider);
+            viewModel.OpenFlightWindowCommand = new OpenFlightWindowCommand(viewModel, accountDataProvider);
             viewModel.Crew = new();
             return viewModel;
         }
@@ -25,6 +27,15 @@ namespace FlightManagement.ViewModelsFactories.Flights
         {
             viewModel.Crew = new();
             InitializeCollections(viewModel);
+            viewModel.OpenFlightWindowCommand = new OpenFlightWindowCommand(viewModel, accountDataProvider);
+            InitializeCommands(viewModel, accountDataProvider);
+        }
+
+        public static void FillHistoryView(FlightViewModel viewModel, AccountDataProvider accountDataProvider)
+        {
+            viewModel.Crew = new();
+            InitializeCollections(viewModel);
+            viewModel.OpenFlightWindowCommand = new OpenFlightsHistoryInfoCommand(viewModel);
             InitializeCommands(viewModel, accountDataProvider);
         }
 
@@ -64,7 +75,6 @@ namespace FlightManagement.ViewModelsFactories.Flights
 
         private static void InitializeCommands(FlightViewModel viewModel, AccountDataProvider accountDataProvider)
         {
-            viewModel.OpenFlightWindowCommand = new OpenFlightWindowCommand(viewModel, accountDataProvider);
             viewModel.DeleteFlightCommand = new DeleteFlightCommand();
             viewModel.CloseAddFlightWindowCommand = new CloseAddFlightWindowCommand();
             viewModel.SaveConfigurationCommand = new SaveConfigurationCommand();

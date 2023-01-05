@@ -5,9 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Orientation="Horizontal" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}" VerticalAlignment="Stretch">
-        <Rectangle Height="10" Width="20" ></Rectangle>
-        <Label VerticalAlignment="Center" Content="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}"/>
-    </StackPanel>
+             d:DesignHeight="50" d:DesignWidth="800">
+    <Grid Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="1" VerticalAlignment="Center" Content="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}"/>
+        <Button x:Name="LogoutButton" Grid.Column="2" Click="ButtonBase_OnClick" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="70" BorderThickness="0" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}}" >Wyloguj</Button>
+    </Grid>
 </UserControl>

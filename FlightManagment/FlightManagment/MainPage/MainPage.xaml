@@ -13,10 +13,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <flightManagement:Header Grid.Row="0"/>
         <TabControl Grid.Row="1">
             <TabItem Header="Baza samolotów" Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}">
                 <airPlanesPage:AirPlanesList DataContext="{Binding AirPlanesListViewModel}"/>
@@ -24,7 +22,9 @@
             <TabItem Header="Połączenia">
                 <flights:FlightsPage DataContext="{Binding FlightsListViewModel}"/>
             </TabItem>
-            <TabItem Header="Historia połączeń"></TabItem>
+            <TabItem Header="Historia połączeń">
+                <flights:FlightsList DataContext="{Binding FlightsHistoryViewModel}"/>
+            </TabItem>
             <TabItem Header="Załoga">
                 <crew:CrewView DataContext="{Binding CrewViewModel}"></crew:CrewView>
             </TabItem>

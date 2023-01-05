@@ -14,11 +14,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <flightManagement:Header Grid.Row="0"/>
-        <Grid Grid.Row="1" Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}" >
+        <Grid Grid.Row="0" Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="*"/>

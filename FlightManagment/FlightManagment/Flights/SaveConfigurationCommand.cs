@@ -38,7 +38,7 @@ namespace FlightManagement.Flights
                 MessageBox.Show(window, "Minimalna ilośc załogi to 4", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            if (flightViewModel.TicketPrice == 0)
+            if (!flightViewModel.TicketPrice.HasValue || flightViewModel.TicketPrice == 0)
             {
                 MessageBox.Show(window, "Podaj cenę biletu", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;

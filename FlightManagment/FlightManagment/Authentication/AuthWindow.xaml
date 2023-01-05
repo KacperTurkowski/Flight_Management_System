@@ -17,12 +17,11 @@
             <RowDefinition Height="32"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <flightManagement:Header Grid.Row="0"/>
+        <flightManagement:Header Grid.Row="0" LogOutVisibility="Collapsed"/>
         <Label Grid.Row="1" HorizontalAlignment="Center">Login</Label>
         <TextBox Grid.Row="2" Width="250" Height="30" Text="{Binding Login}"  VerticalContentAlignment="Center" BorderThickness="0"/>
         <Label  Grid.Row="3" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center">Hasło</Label>
         <PasswordBox  Grid.Row="4" x:Name="PasswordBox" Width="250" Height="30" PasswordChar="*"  VerticalContentAlignment="Center" BorderThickness="0"/>
         <Button  Grid.Row="5" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=AuthWindow1}" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}" Width="100" Height="30">Zaloguj</Button>
-
     </Grid>
 </Window>

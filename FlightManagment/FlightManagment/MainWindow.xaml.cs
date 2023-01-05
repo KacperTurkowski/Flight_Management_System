@@ -24,6 +24,11 @@ namespace FlightManagement
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+            Login();
+        }
+
+        public void Login()
+        {
             Hide();
             var authWindow = new AuthWindow
             {
@@ -46,8 +51,6 @@ namespace FlightManagement
                 SwitchView = 1;
                 DataContext = MainPageViewModelFactory.Create(_accountDataProvider);
             }
-                
-            
         }
     }
 }

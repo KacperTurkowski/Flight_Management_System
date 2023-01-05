@@ -14,7 +14,8 @@ namespace FlightManagement.ViewModelsFactories
             {
                 AirPlanesListViewModel = AirPlanesListViewModelFactory.Create(),
                 CrewViewModel = CrewViewModelFactory.Create(),
-                FlightsListViewModel = FlightsListViewModelFactory.Create(accountDataProvider)
+                FlightsListViewModel = FlightsListViewModelFactory.Create(accountDataProvider),
+                FlightsHistoryViewModel = FlightsHistoryViewModelFactory.Create(accountDataProvider)
             };
         }
     }

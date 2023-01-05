@@ -9,4 +9,5 @@ public class MainPageViewModel
     public Crew.CrewViewModel CrewViewModel { get; set; }
     public FlightsListViewModel FlightsListViewModel { get; set; }
     public int SwitchView { get; set; } = 1;
+    public FlightsHistoryViewModel FlightsHistoryViewModel { get; set; }
 }

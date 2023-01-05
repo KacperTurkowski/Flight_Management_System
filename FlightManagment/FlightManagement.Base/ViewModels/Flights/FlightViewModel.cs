@@ -65,9 +65,12 @@ namespace FlightManagement.Base.ViewModels.Flights
 
         public string Date => StartDate.ToShortDateString();
         public string Time => StartDate.ToShortTimeString();
+        public int UsedFuel => (FlightLength ?? 0) * Airplane?.FuelUsage ?? 0;
         public string AirplaneName => Airplane?.Name ?? string.Empty;
-        public string PilotName => Pilot.FullName;
+        public string PilotName => Pilot?.FullName ?? string.Empty;
         public bool IsConfigured => Pilot != null;
+        public int CargoPrice => 10;
+        public int Profit => SoldCargo * CargoPrice + SoldTickets * (TicketPrice ?? 0) - UsedFuel * 10; 
         public ObservableCollection<CrewMemberViewModel> AvailablePilots { get; set; }
         public ObservableCollection<CrewMemberViewModel> AvailableCrew { get; set; }
         public ObservableCollection<AirplaneViewModel> AvailableAirplanes { get; set; }
