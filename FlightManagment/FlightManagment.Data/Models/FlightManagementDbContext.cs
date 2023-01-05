@@ -33,6 +33,7 @@ public partial class FlightManagementDbContext : DbContext
 
             entity.Property(e => e.AipId).HasColumnName("AIP_ID");
             entity.Property(e => e.AipFuelUsage).HasColumnName("AIP_FuelUsage");
+            entity.Property(e => e.AipIsActivated).HasColumnName("AIP_IsActivated");
             entity.Property(e => e.AipIsNarrowBody).HasColumnName("AIP_IsNarrowBody");
             entity.Property(e => e.AipMaxPassengers).HasColumnName("AIP_MaxPassengers");
             entity.Property(e => e.AipMaxWeight).HasColumnName("AIP_MaxWeight");

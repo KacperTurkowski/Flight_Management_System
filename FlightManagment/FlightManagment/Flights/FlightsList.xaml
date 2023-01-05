@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FlightManagement.Flights"
              xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" x:Name="flightsList">
     <UserControl.Resources>
         <local:FlightColorConverter x:Key="flightColorConverter"/>
     </UserControl.Resources>
@@ -15,7 +15,7 @@
             <ItemsControl  ItemsSource="{Binding Flights}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button HorizontalContentAlignment="Stretch" Background="{Binding IsConfigured, Converter={StaticResource flightColorConverter}}" Margin="10" BorderThickness="0" Command="{Binding OpenFlightWindowCommand}" HorizontalAlignment="Stretch">
+                        <Button HorizontalContentAlignment="Stretch" Background="{Binding IsConfigured, Converter={StaticResource flightColorConverter}}" Margin="10" BorderThickness="0" Command="{Binding OpenFlightWindowCommand}" CommandParameter="{Binding ElementName=flightsList}" HorizontalAlignment="Stretch">
                             <Grid HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.3*"/>

@@ -4,6 +4,7 @@ namespace FlightManagement.Base.ViewModels.Airplane;
 
 public class AirplaneViewModel
 {
+    public int AirplaneId { get; set; }
     public string Name { get; set; }
     public string Producer { get; set; }
     public bool IsNarrowBody { get; set; }

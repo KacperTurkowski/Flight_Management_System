@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:FlightManagement.Flights"
         xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
         mc:Ignorable="d"
-        Title="NotConfiguredFlightAdminView" Height="410" Width="800">
+        Title="{Binding Title}" Height="410" Width="800" ResizeMode="NoResize"
+        x:Name="notConfiguredFlightWindow">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="TextBoxStyle">
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -52,6 +53,6 @@
             <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource LabelStyle}">Godzina</Label>
             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Time, Mode=OneWay}" Style="{StaticResource TextBoxStyle}"/>
         </Grid>
-        <Button Grid.Row="9" Command="{Binding DeleteCrewMemberCommand}" CommandParameter="{Binding ElementName=crewMemberInfo}" Margin="100,5,100,5" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">Usuń połączenie</Button>
+        <Button Grid.Row="9" Command="{Binding DeleteFlightCommand}" CommandParameter="{Binding ElementName=notConfiguredFlightWindow}" Margin="100,5,100,5" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">Usuń połączenie</Button>
     </Grid>
 </Window>

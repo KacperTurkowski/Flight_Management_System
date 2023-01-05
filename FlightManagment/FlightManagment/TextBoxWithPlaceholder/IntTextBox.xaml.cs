@@ -51,6 +51,7 @@ namespace FlightManagement.TextBoxWithPlaceholder
             {
                 Text = Placeholder;
                 Foreground = new SolidColorBrush(Colors.Gray);
+                _textWasChanged = false;
             }
             else
                 _textWasChanged = true;
@@ -63,6 +64,11 @@ namespace FlightManagement.TextBoxWithPlaceholder
             Foreground = new SolidColorBrush(Colors.Black);
         }
 
-        private void IntTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e) => e.Handled = _regex.IsMatch(e.Text);
+        private void IntTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (e.Text.Length == 0)
+                _textWasChanged = false;
+            e.Handled = _regex.IsMatch(e.Text);
+        }
     }
 }

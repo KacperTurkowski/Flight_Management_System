@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using FlightManagement.Base.Airplanes;
 using FlightManagement.Base.Authentication;
 using FlightManagement.Base.Flights;
@@ -7,6 +8,7 @@ using FlightManagement.Base.ViewModels;
 using FlightManagement.Base.ViewModels.Airplane;
 using FlightManagement.Base.ViewModels.Crew;
 using FlightManagement.Base.ViewModels.Flights;
+using FlightManagement.ViewModelsFactories.Crew;
 using FlightManagement.ViewModelsFactories.Flights;
 
 namespace FlightManagement.ViewModelsFactories
@@ -34,6 +36,12 @@ namespace FlightManagement.ViewModelsFactories
                     var airplane = airPlanesRepository.TryGetById(flightViewModel.AirplaneId.Value);
                     if (airplane != null)
                         flightViewModel.Airplane = AirplaneMapper.MapTo(airplane);
+                }
+                foreach (var crewMember in flight.CrewToFlightAssocs.Select(x => x.Crw))
+                {
+                    var crewMemberViewModel = CrewMemberMapper.MapTo(crewMember);
+                    CrewMemberViewModelFactory.Fill(crewMemberViewModel);
+                    flightViewModel.Crew.Add(crewMemberViewModel);
                 }
 
                 flights.Add(flightViewModel);

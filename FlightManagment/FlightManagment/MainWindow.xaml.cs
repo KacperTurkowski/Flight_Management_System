@@ -24,11 +24,11 @@ namespace FlightManagement
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+            Hide();
             var authWindow = new AuthWindow
             {
                 DataContext = AuthWindowViewModelFactory.Create(_accountDataProvider)
             };
-            Hide();
             var loggingResult = authWindow.ShowDialog();
 
             if (loggingResult == true)

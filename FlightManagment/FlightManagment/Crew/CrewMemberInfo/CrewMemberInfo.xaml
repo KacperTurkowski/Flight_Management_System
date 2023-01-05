@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlightManagement.Crew.CrewMemberInfo"
         xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
         mc:Ignorable="d"
-        Title="CrewMemberInfo" Height="480" Width="800"
+        Title="{Binding FullName}" Height="480" Width="800" ResizeMode="NoResize"
         x:Name="crewMemberInfo">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="TextBoxStyle">

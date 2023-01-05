@@ -6,7 +6,7 @@
         xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
         xmlns:textBoxWithPlaceholder="clr-namespace:FlightManagement.TextBoxWithPlaceholder"
         mc:Ignorable="d"
-        Title="Dodaj samolot" Height="480" Width="800" ResizeMode="NoResize" x:Name="addPlaneWindow">
+        Title="Dodaj samolot" Height="460" Width="800" ResizeMode="NoResize" x:Name="addPlaneWindow">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="TextBoxStyle">
             <Setter Property="Margin" Value="5,0,5,10"/>

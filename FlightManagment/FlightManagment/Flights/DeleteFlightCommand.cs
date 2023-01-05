@@ -1,5 +1,6 @@
 ﻿using FlightManagement.Base.ViewModels.Flights;
 using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FlightManagement.Flights
@@ -10,10 +11,10 @@ namespace FlightManagement.Flights
 
         public void Execute(object? parameter)
         {
-            if (parameter is not ConfiguredFlightWindow configuredFlightWindow || configuredFlightWindow.DataContext is not FlightViewModel flightViewModel) throw new ArgumentNullException(nameof(parameter));
+            if (parameter is not Window flightWindow || flightWindow.DataContext is not FlightViewModel flightViewModel) throw new ArgumentNullException(nameof(parameter));
 
-            configuredFlightWindow.DialogResult = true;
-            configuredFlightWindow.Close();
+            flightWindow.DialogResult = true;
+            flightWindow.Close();
         }
 
         public event EventHandler? CanExecuteChanged { add { } remove { } }

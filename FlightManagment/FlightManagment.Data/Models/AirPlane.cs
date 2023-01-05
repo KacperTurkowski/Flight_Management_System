@@ -16,5 +16,7 @@ public partial class AirPlane
 
     public int AipFuelUsage { get; set; }
 
+    public bool AipIsActivated { get; set; }
+
     public virtual ICollection<Flight> Flights { get; } = new List<Flight>();
 }

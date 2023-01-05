@@ -7,7 +7,7 @@
         xmlns:textBoxWithPlaceholder="clr-namespace:FlightManagement.TextBoxWithPlaceholder"
         xmlns:crewSelection="clr-namespace:FlightManagement.Flights.CrewSelection"
         mc:Ignorable="d"
-        Title="FlightConfigurationWindow" Height="440" Width="800" ResizeMode="NoResize" x:Name="flightConfigurationWindow">
+        Title="{Binding Title}" Height="440" Width="800" ResizeMode="NoResize" x:Name="flightConfigurationWindow">
     <Grid Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>

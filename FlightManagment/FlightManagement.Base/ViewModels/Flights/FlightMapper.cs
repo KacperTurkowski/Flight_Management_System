@@ -12,7 +12,7 @@ namespace FlightManagement.Base.ViewModels.Flights
                 FliEndAirport = flight.EndAirport,
                 FliStartPlace = flight.StartPlace,
                 FliEndPlace = flight.EndPlace,
-                FliFlightLength = flight.FlightLength,
+                FliFlightLength = flight.FlightLength.Value,
                 FliStartDate = flight.StartDate,
                 FliSoldTickets = flight.SoldTickets,
                 FliSoldCargo = flight.SoldCargo,
@@ -36,7 +36,8 @@ namespace FlightManagement.Base.ViewModels.Flights
                 SoldCargo = flight.FliSoldCargo,
                 PilotId = flight.CrwId,
                 AirplaneId = flight.AipId,
-                TicketPrice = flight.FliTicketPrice
+                TicketPrice = flight.FliTicketPrice,
+                ID = flight.FliId
             };
         }
     }

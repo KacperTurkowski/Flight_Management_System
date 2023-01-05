@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using FlightManagement.Base.Airplanes;
 using FlightManagement.Base.ViewModels.Airplane;
 
 namespace FlightManagement.AirPlanesPage.AirplaneInfo;
@@ -25,7 +26,10 @@ public class OpenAirplaneInfoCommand : ICommand
         };
         var toRemove = window.ShowDialog();
         if (toRemove == true)
+        {
             _airPlanesListViewModel.Airplanes.Remove(airplaneViewModel);
+            new AirPlanesRepository().Deactivate(airplaneViewModel.AirplaneId);
+        }
 
         _airPlanesListViewModel.OnPropertyChanged();
     }

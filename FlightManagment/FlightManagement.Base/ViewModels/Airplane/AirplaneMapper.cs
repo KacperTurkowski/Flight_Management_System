@@ -13,7 +13,8 @@ namespace FlightManagement.Base.ViewModels.Airplane
                 AipMaxPassengers = airplaneViewModel.MaxPassengers,
                 AipMaxWeight = airplaneViewModel.MaxWeight,
                 AipProducer = airplaneViewModel.Producer,
-                AipName = airplaneViewModel.Name
+                AipName = airplaneViewModel.Name,
+                AipIsActivated = true
             };
         }
 
@@ -26,7 +27,8 @@ namespace FlightManagement.Base.ViewModels.Airplane
                 MaxPassengers = airPlane.AipMaxPassengers,
                 MaxWeight = airPlane.AipMaxWeight,
                 Producer = airPlane.AipProducer,
-                Name = airPlane.AipName
+                Name = airPlane.AipName,
+                AirplaneId = airPlane.AipId
             };
         }
     }

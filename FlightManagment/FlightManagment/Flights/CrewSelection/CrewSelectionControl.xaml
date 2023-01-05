@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightManagement.Flights.CrewSelection"
+             xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200">
     <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
@@ -10,7 +12,14 @@
             <ItemsControl  ItemsSource="{Binding Crew}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBox Margin="5" Text="{Binding FullName, Mode=OneWay}" IsEnabled = "False" VerticalContentAlignment="Center" Height="30"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Margin="5" Text="{Binding FullName, Mode=OneWay}" IsEnabled = "False" VerticalContentAlignment="Center" Height="30"/>
+                            <Button Grid.Column="1" Click="ButtonBase_OnClick" Width="25" Height="25" HorizontalContentAlignment="Center" VerticalAlignment="Center" Background="{Binding Source={x:Static viewConstants:ColorStatic.MainColor}, Mode=OneWay}">x</Button>
+                        </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

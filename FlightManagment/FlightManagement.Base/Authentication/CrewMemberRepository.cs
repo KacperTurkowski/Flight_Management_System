@@ -12,6 +12,8 @@ public class CrewMemberRepository
         using var dbContext = new FlightManagementDbContext();
         dbContext.CrewMembers.Add(dbEntity);
         dbContext.SaveChanges();
+
+        crewMemberViewModel.Id = dbEntity.CrwId;
     }
 
     public CrewMember? TryGetById(int id)

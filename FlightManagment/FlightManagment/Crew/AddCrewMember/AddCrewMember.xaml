@@ -7,9 +7,9 @@
         xmlns:textBoxWithPlaceholder="clr-namespace:FlightManagement.TextBoxWithPlaceholder"
         xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
         mc:Ignorable="d"
-        Title="AddCrewMember" Height="440" Width="800"
+        Title="Dodaj pracownika" Height="440" Width="800"
         Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}"
-        x:Name="addCrewMemberWindow">
+        x:Name="addCrewMemberWindow" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="TextBoxStyle">
             <Setter Property="Margin" Value="5"/>

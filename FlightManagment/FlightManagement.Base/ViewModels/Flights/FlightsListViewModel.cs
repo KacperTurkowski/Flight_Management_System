@@ -6,11 +6,16 @@ using FlightManagement.Base.Authentication;
 
 namespace FlightManagement.Base.ViewModels.Flights
 {
-    public class FlightsListViewModel : INotifyPropertyChanged
+    public class FlightsListViewModel : IFlightCollection
     {
         public ObservableCollection<FlightViewModel> Flights { get; set; }
         public ICommand AddFlightCommand { get; set; }
-        public AccountDataProvider AccountDataProvider { get; set; }
+        public AccountDataProvider AccountDataProvider { get; }
+
+        public FlightsListViewModel(AccountDataProvider accountDataProvider)
+        {
+            AccountDataProvider = accountDataProvider;
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

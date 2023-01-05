@@ -14,8 +14,12 @@ public class AirPlanesListViewModelFactory
         result.Airplanes = new ObservableCollection<AirplaneViewModel>();
 
         var airplanes = new AirPlanesRepository().GetAirplanes();
-        foreach (var airplane in airplanes) 
-            result.Airplanes.Add(AirplaneMapper.MapTo(airplane));
+        foreach (var airplane in airplanes)
+        {
+            var airplaneViewModel = AirplaneMapper.MapTo(airplane);
+            AirplaneViewModelFactory.Fill(airplaneViewModel);
+            result.Airplanes.Add(airplaneViewModel);
+        }
 
         result.AddPlaneCommand = new AddPlaneCommand(result);
         result.OpenAirplaneInfoCommand = new OpenAirplaneInfoCommand(result);

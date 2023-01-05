@@ -11,6 +11,8 @@ namespace FlightManagement.Base.Airplanes
             using var dbContext = new FlightManagementDbContext();
             dbContext.AirPlanes.Add(dbEntity);
             dbContext.SaveChanges();
+
+            airplaneViewModel.AirplaneId = dbEntity.AipId;
         }
         public AirPlane? TryGetById(int id)
         {
@@ -21,7 +23,18 @@ namespace FlightManagement.Base.Airplanes
         public List<AirPlane> GetAirplanes()
         {
             using var dbContext = new FlightManagementDbContext();
-            return dbContext.AirPlanes.ToList();
+            return dbContext.AirPlanes.Where(x=>x.AipIsActivated).ToList();
+        }
+
+        public void Deactivate(int id)
+        {
+            using var dbContext = new FlightManagementDbContext();
+            var airPlane = dbContext.AirPlanes.SingleOrDefault(x => x.AipId == id);
+            if (airPlane != null)
+            {
+                airPlane.AipIsActivated = false;
+                dbContext.SaveChanges();
+            }
         }
     }
 }
