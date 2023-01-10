@@ -1,0 +1,121 @@
+USE master;
+GO
+CREATE DATABASE FlightManagementDB
+GO
+
+USE [FlightManagementDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AirPlanes](
+	[AIP_ID] [int] IDENTITY(1,1) NOT NULL,
+	[AIP_Name] [varchar](255) NOT NULL,
+	[AIP_Producer] [varchar](255) NOT NULL,
+	[AIP_IsNarrowBody] [bit] NOT NULL,
+	[AIP_MaxWeight] [int] NOT NULL,
+	[AIP_MaxPassengers] [int] NOT NULL,
+	[AIP_FuelUsage] [int] NOT NULL,
+	[AIP_IsActivated] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[AIP_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CrewMembers](
+	[CRW_ID] [int] IDENTITY(1,1) NOT NULL,
+	[CRW_FirstName] [varchar](255) NOT NULL,
+	[CRW_LastName] [varchar](255) NOT NULL,
+	[CRW_Position] [varchar](255) NOT NULL,
+	[CRW_SocialSecurityNumber] [int] NOT NULL,
+	[CRW_Street] [varchar](255) NOT NULL,
+	[CRW_HouseNumber] [varchar](255) NOT NULL,
+	[CRW_PostalCode] [varchar](255) NOT NULL,
+	[CRW_City] [varchar](255) NOT NULL,
+	[CRW_PhoneNumber] [int] NOT NULL,
+	[CRW_Email] [varchar](255) NOT NULL,
+	[CRW_Password] [varchar](255) NULL,
+	[CRW_IsActive] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CRW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Flights](
+	[FLI_ID] [int] IDENTITY(1,1) NOT NULL,
+	[FLI_StartAirport] [varchar](255) NOT NULL,
+	[FLI_EndAirport] [varchar](255) NOT NULL,
+	[FLI_StartPlace] [varchar](255) NOT NULL,
+	[FLI_EndPlace] [varchar](255) NOT NULL,
+	[FLI_FlightLength] [int] NOT NULL,
+	[FLI_StartDate] [datetime] NOT NULL,
+	[AIP_ID] [int] NULL,
+	[FLI_SoldTickets] [int] NOT NULL,
+	[FLI_SoldCargo] [int] NOT NULL,
+	[CRW_ID] [int] NULL,
+	[FLI_TicketPrice] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[FLI_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Flights]  WITH CHECK ADD FOREIGN KEY([AIP_ID])
+REFERENCES [dbo].[AirPlanes] ([AIP_ID])
+GO
+
+ALTER TABLE [dbo].[Flights]  WITH CHECK ADD FOREIGN KEY([CRW_ID])
+REFERENCES [dbo].[CrewMembers] ([CRW_ID])
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CrewToFlightAssoc](
+	[CTF_ID] [int] IDENTITY(1,1) NOT NULL,
+	[FLI_ID] [int] NOT NULL,
+	[CRW_ID] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CTF_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[CrewToFlightAssoc]  WITH CHECK ADD FOREIGN KEY([CRW_ID])
+REFERENCES [dbo].[CrewMembers] ([CRW_ID])
+GO
+
+ALTER TABLE [dbo].[CrewToFlightAssoc]  WITH CHECK ADD FOREIGN KEY([FLI_ID])
+REFERENCES [dbo].[Flights] ([FLI_ID])
+GO
+
+
+
+
+
+
