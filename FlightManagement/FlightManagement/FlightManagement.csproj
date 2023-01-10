@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FlightManagement.Base\FlightManagement.Base.csproj" />
+    <ProjectReference Include="..\FlightManagement.Data\FlightManagement.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

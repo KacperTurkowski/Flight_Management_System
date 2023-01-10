@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using FlightManagement.Base.Flights;
 using FlightManagement.Base.ViewModels.Flights;
@@ -28,6 +30,7 @@ namespace FlightManagement.Flights
                 new FlightsRepository().SaveFlight(viewModel);
 
                 _flightsListViewModel.Flights.Add(viewModel);
+                _flightsListViewModel.Flights = new ObservableCollection<FlightViewModel>(_flightsListViewModel.Flights.OrderBy(x => x.StartDate));
                 _flightsListViewModel.OnPropertyChanged(nameof(FlightsListViewModel.Flights));
             }
 
