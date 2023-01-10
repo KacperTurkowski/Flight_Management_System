@@ -1,7 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using FlightManagement.Authentication;
 using FlightManagement.Base.Authentication;
 using FlightManagement.Base.Position;
+using FlightManagement.Data.Models;
 using FlightManagement.MainPage;
 using FlightManagement.ViewModelsFactories;
 using FlightManagement.ViewModelsFactories.Crew;
@@ -30,10 +33,28 @@ namespace FlightManagement
         public void Login()
         {
             Hide();
-            var authWindow = new AuthWindow
+            try
             {
-                DataContext = AuthWindowViewModelFactory.Create(_accountDataProvider)
-            };
+                using (var dbContext = new FlightManagementDbContext())
+                {
+                    if (!dbContext.Database.CanConnect())
+                    {
+                        MessageBox.Show("Błąd łączenia z bazą danych", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Close();
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Brakuje pliku konfiguracyjnego bazy danych", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Close();
+            }
+
+
+            var authWindow = new AuthWindow
+                {
+                    DataContext = AuthWindowViewModelFactory.Create(_accountDataProvider)
+                };
             var loggingResult = authWindow.ShowDialog();
 
             if (loggingResult == true)
