@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
         mc:Ignorable="d"
-        Title="{Binding Name}" Height="500" Width="800" ResizeMode="NoResize" x:Name="airplaneInfoWindow">
+        Title="{Binding Name}" Height="500" Width="800" ResizeMode="NoResize" x:Name="airplaneInfoWindow" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="TextBoxStyle">
             <Setter Property="VerticalContentAlignment" Value="Center"/>

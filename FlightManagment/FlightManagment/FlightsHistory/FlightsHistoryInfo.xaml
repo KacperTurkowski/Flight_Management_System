@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlightManagement.FlightsHistory"
         xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
         mc:Ignorable="d"
-        Title="{Binding Title, Mode=OneWay}" Height="460" Width="800" ResizeMode="NoResize">
+        Title="{Binding Title, Mode=OneWay}" Height="460" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>

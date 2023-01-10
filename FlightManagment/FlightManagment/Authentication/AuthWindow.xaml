@@ -7,7 +7,7 @@
         xmlns:flightManagement="clr-namespace:FlightManagement"
         xmlns:textBoxWithPlaceholder="clr-namespace:FlightManagement.TextBoxWithPlaceholder"
         mc:Ignorable="d"
-        Title="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}" Height="270" Width="400" ResizeMode="NoResize" x:Name="AuthWindow1">
+        Title="{Binding Source={x:Static viewConstants:StringStatic.Title}, Mode=OneWay}" Height="270" Width="400" ResizeMode="NoResize" x:Name="AuthWindow1" WindowStartupLocation="CenterOwner">
     <Grid Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>

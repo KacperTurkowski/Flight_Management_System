@@ -7,7 +7,7 @@
         xmlns:viewConstants="clr-namespace:FlightManagement.ViewConstants"
         mc:Ignorable="d"
         Title="{Binding FullName}" Height="480" Width="800" ResizeMode="NoResize"
-        x:Name="crewMemberInfo">
+        x:Name="crewMemberInfo" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="TextBoxStyle">
             <Setter Property="VerticalContentAlignment" Value="Center"/>

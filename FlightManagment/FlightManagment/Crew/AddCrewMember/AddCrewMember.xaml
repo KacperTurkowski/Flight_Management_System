@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="Dodaj pracownika" Height="440" Width="800"
         Background="{Binding Source={x:Static viewConstants:ColorStatic.SecondColor}, Mode=OneWay}"
-        x:Name="addCrewMemberWindow" ResizeMode="NoResize">
+        x:Name="addCrewMemberWindow" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="TextBoxStyle">
             <Setter Property="Margin" Value="5"/>
