@@ -28,8 +28,9 @@ namespace FlightManagement.AirPlanesPage.AddPlane
 
             if (result == true)
             {
-                _airPlanesRepository.SaveAirPlane(MapToAirplane(viewModel));
-                _airPlanesListViewModel.Airplanes.Add(MapToAirplane(viewModel));
+                var airplaneViewModel = MapToAirplane(viewModel);
+                _airPlanesRepository.SaveAirPlane(airplaneViewModel);
+                _airPlanesListViewModel.Airplanes.Add(airplaneViewModel);
             }
 
             _airPlanesListViewModel.OnPropertyChanged();
