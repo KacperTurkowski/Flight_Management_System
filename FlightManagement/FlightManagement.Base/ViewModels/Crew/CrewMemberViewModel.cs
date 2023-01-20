@@ -8,18 +8,48 @@ namespace FlightManagement.Base.ViewModels.Crew;
 
 public class CrewMemberViewModel : INotifyPropertyChanged
 {
+    private int _socialSecurityNumber;
+    private int _phoneNumber;
     public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public ObservableCollection<string> Positions { get; set; }
     public string Position { get; set; }
     public PositionEnum PositionEnum => PositionToStringMapper.MapTo(Position);
-    public int SocialSecurityNumber { get; set; }
+
+    public int SocialSecurityNumber
+    {
+        get => _socialSecurityNumber;
+        set
+        {
+            if (value < 0)
+            {
+                OnPropertyChanged();
+                return;
+            }
+            _socialSecurityNumber = value;
+        }
+    }
+
     public string Street { get; set; }
     public string HouseNumber { get; set; }
     public string PostalCode { get; set; }
     public string City { get; set; }
-    public int PhoneNumber { get; set; }
+
+    public int PhoneNumber
+    {
+        get => _phoneNumber;
+        set
+        {
+            if (value < 0)
+            {
+                OnPropertyChanged();
+                return;
+            }
+            _phoneNumber = value;
+        }
+    }
+
     public string Email { get; set; }
     public bool IsActive { get; set; } = true;
     public ICommand CloseAddCrewMemberCommand { get; set; }
@@ -34,7 +64,7 @@ public class CrewMemberViewModel : INotifyPropertyChanged
         Positions = GetPositionsString();
     }
 
-    public static ObservableCollection<string> GetPositionsString()
+    private static ObservableCollection<string> GetPositionsString()
     {
         var values = Enum.GetValues(typeof(PositionEnum)).Cast<PositionEnum>().Except(new[] { PositionEnum.Admin }).ToList();
         var result = new ObservableCollection<string>();

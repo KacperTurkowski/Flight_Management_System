@@ -52,6 +52,11 @@ public class AddPlaneViewModel : INotifyPropertyChanged
         set
         {
             if (value == _maxWeight) return;
+            if (value < 0)
+            {
+                OnPropertyChanged();
+                return;
+            }
             _maxWeight = value;
             OnPropertyChanged();
         }
@@ -63,6 +68,11 @@ public class AddPlaneViewModel : INotifyPropertyChanged
         set
         {
             if (value == _maxPassengers) return;
+            if (value < 0)
+            {
+                OnPropertyChanged();
+                return;
+            }
             _maxPassengers = value;
             OnPropertyChanged();
         }
@@ -74,6 +84,11 @@ public class AddPlaneViewModel : INotifyPropertyChanged
         set
         {
             if (value.Equals(_fuelUsage)) return;
+            if (value < 0)
+            {
+                OnPropertyChanged();
+                return;
+            }
             _fuelUsage = value;
             OnPropertyChanged();
         }

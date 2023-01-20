@@ -11,13 +11,52 @@ namespace FlightManagement.Base.ViewModels.Flights
     {
         private CrewMemberViewModel? _pilot;
         private AirplaneViewModel _airplane;
+        private int? _flightLength;
+        private int? _airplaneId;
+        private int _soldTickets;
+        private int _soldCargo;
+        private int? _ticketPrice;
+        private DateTime _startDate = DateTime.Now;
         public string Title => string.Concat(StartAirport, "->",EndAirport);
         public string StartAirport { get; set; }
         public string EndAirport { get; set; }
         public string StartPlace { get; set; }
         public string EndPlace { get; set; }
-        public int? FlightLength { get; set; }
-        public DateTime StartDate { get; set; } = DateTime.Now;
+
+        public int? FlightLength
+        {
+            get => _flightLength;
+            set
+            {
+                if (value == _flightLength) return;
+                if (value < 0)
+                {
+                    OnPropertyChanged();
+                    return;
+                }
+                _flightLength = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(UsedFuel));
+            }
+        }
+
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set
+            {
+                if (value.Equals(_startDate)) return;
+                if (value.Date < DateTime.Now.Date)
+                {
+                    OnPropertyChanged();
+                    return;
+                }
+                _startDate = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Date));
+                OnPropertyChanged(nameof(Time));
+            }
+        }
 
         public AirplaneViewModel Airplane
         {
@@ -31,9 +70,55 @@ namespace FlightManagement.Base.ViewModels.Flights
             }
         }
 
-        public int? AirplaneId { get; set; }
-        public int SoldTickets { get; set; }
-        public int SoldCargo { get; set; }
+        public int? AirplaneId
+        {
+            get => _airplaneId;
+            set
+            {
+                if (value == _airplaneId) return;
+                if (value < 0)
+                {
+                    OnPropertyChanged();
+                    return;
+                }
+                _airplaneId = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int SoldTickets
+        {
+            get => _soldTickets;
+            set
+            {
+                if (value == _soldTickets) return;
+                if (value < 0)
+                {
+                    OnPropertyChanged();
+                    return;
+                }
+                _soldTickets = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Profit));
+            }
+        }
+
+        public int SoldCargo
+        {
+            get => _soldCargo;
+            set
+            {
+                if (value == _soldCargo) return;
+                if (value < 0)
+                {
+                    OnPropertyChanged();
+                    return;
+                }
+                _soldCargo = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Profit));
+            }
+        }
 
         public CrewMemberViewModel? Pilot
         {
@@ -50,10 +135,25 @@ namespace FlightManagement.Base.ViewModels.Flights
 
         public int? PilotId { get; set; }
         public ObservableCollection<CrewMemberViewModel> Crew { get; set; }
-        public int? TicketPrice { get; set; }
-        
 
-        
+        public int? TicketPrice
+        {
+            get => _ticketPrice;
+            set
+            {
+                if (value == _ticketPrice) return;
+                if (value < 0)
+                {
+                    OnPropertyChanged();
+                    return;
+                }
+                _ticketPrice = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Profit));
+            }
+        }
+
+
         public ICommand OpenFlightWindowCommand { get; set; }
         public ICommand CloseAddFlightWindowCommand { get; set; }
         public ICommand SaveConfigurationCommand { get; set; }
@@ -69,7 +169,7 @@ namespace FlightManagement.Base.ViewModels.Flights
         public string AirplaneName => Airplane?.Name ?? string.Empty;
         public string PilotName => Pilot?.FullName ?? string.Empty;
         public bool IsConfigured => Pilot != null;
-        public int CargoPrice => 10;
+        public int CargoPrice => 1000;
         public int Profit => SoldCargo * CargoPrice + SoldTickets * (TicketPrice ?? 0) - UsedFuel * 10; 
         public ObservableCollection<CrewMemberViewModel> AvailablePilots { get; set; }
         public ObservableCollection<CrewMemberViewModel> AvailableCrew { get; set; }
