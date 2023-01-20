@@ -120,4 +120,7 @@ INSERT INTO [dbo].[CrewMembers] ([CRW_FirstName], [CRW_LastName], [CRW_Position]
 [CRW_City], [CRW_PhoneNumber], [CRW_Email], [CRW_Password], [CRW_IsActive])
 VALUES('Stanisław','Dąb', 'Admin', 123456789, 'łojasiewicza', 7, '30-382', 'Kraków', 779654253, 'admin@admin.com', 'Admin', 1)
 
+INSERT INTO [dbo].[CrewMembers] ([CRW_FirstName], [CRW_LastName], [CRW_Position], [CRW_SocialSecurityNumber], [CRW_Street], [CRW_HouseNumber], [CRW_PostalCode],
+[CRW_City], [CRW_PhoneNumber], [CRW_Email], [CRW_Password], [CRW_IsActive])
+VALUES('Jan','Kowalski', 'Controller', 987654321, 'łojasiewicza', 10, '30-382', 'Kraków', 637825937, 'jan@uj.com', 'Controller', 1)
 
